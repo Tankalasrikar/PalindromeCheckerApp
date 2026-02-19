@@ -1,22 +1,40 @@
 import java.util.Scanner;
 
-// version 1.0
+// version 4.0
 //author Srikar
-//useCase 1: Welcome page
+//useCase 4: Character Array Based Palindrome check
 public class PalindromeCheckerApp {
     public static void main(String[] args) {
         System.out.println("Welcome to Palindrome Checker App Management System");
         Scanner scanner = new Scanner(System.in);
-        System.out.print("Enter a string: ");
+        System.out.print("Enter a word: ");
         String input = scanner.nextLine();
-        String reversed = "";
-        for (int i = input.length() - 1; i >= 0; i--) {
-            reversed = reversed + input.charAt(i);
+        char[] chars = input.toCharArray();
+
+
+        int start = 0;
+        int end = chars.length - 1;
+
+
+        boolean isPalindrome = true;
+
+
+        while (start < end) {
+
+            if (chars[start] != chars[end]) {
+                isPalindrome = false;
+                break;
+            }
+
+            start++;
+            end--;
         }
-        if (input.equals(reversed)) {
-            System.out.println(input + " is a palindrome.");
+
+
+        if (isPalindrome) {
+            System.out.println(input + " is a Palindrome.");
         } else {
-            System.out.println(input + " is not a palindrome.");
+            System.out.println(input + " is NOT a Palindrome.");
         }
 
         scanner.close();
