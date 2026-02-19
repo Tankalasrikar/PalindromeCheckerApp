@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.Stack;
 
 // version 4.0
 //author Srikar
@@ -9,34 +10,28 @@ public class PalindromeCheckerApp {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter a word: ");
         String input = scanner.nextLine();
-        char[] chars = input.toCharArray();
 
+        Stack<Character> stack = new Stack<>();
 
-        int start = 0;
-        int end = chars.length - 1;
-
+        for (char c : input.toCharArray()) {
+            stack.push(c);
+        }
 
         boolean isPalindrome = true;
 
+        for (char c : input.toCharArray()) {
 
-        while (start < end) {
-
-            if (chars[start] != chars[end]) {
+            if (c != stack.pop()) {
                 isPalindrome = false;
                 break;
             }
-
-            start++;
-            end--;
         }
-
 
         if (isPalindrome) {
             System.out.println(input + " is a Palindrome.");
         } else {
             System.out.println(input + " is NOT a Palindrome.");
         }
-
         scanner.close();
 
     }
